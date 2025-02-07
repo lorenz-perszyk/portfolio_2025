@@ -1,9 +1,26 @@
-import type { Metadata } from "next";
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/ui/app-sidebar";
-import { Providers } from "./providers";
-import { Toaster } from "@/components/ui/toaster";
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+
+const rubikFont = localFont({
+	src: [
+		{
+			path: "/fonts/rubik-v28-latin-regular.woff2",
+			weight: "400",
+			style: "normal",
+		},
+		{
+			path: "/fonts/rubik-v28-latin-300.woff2",
+			weight: "300",
+			style: "light",
+		},
+		{
+			path: "/fonts/rubik-v28-latin-500.woff2",
+			weight: "500",
+			style: "medium",
+		},
+	],
+});
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -17,17 +34,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className="w-full h-screen">
-				<Providers>
-					<SidebarProvider>
-						<AppSidebar />
-						<main className="w-full h-screen relative px-3.5 pb-4 pt-16 bg-gradient-radial from-[#06001C] to-[#1A0077]">
-							<SidebarTrigger className="absolute top-2 left-2" />
-							{children}
-						</main>
-						<Toaster />
-					</SidebarProvider>
-				</Providers>
+			<body className={`w-full min-h-screen ${rubikFont.className} antialiased`}>
+				<main className="w-full relative">{children}</main>
 			</body>
 		</html>
 	);
