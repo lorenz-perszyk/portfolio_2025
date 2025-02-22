@@ -1,108 +1,120 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-	Dialog,
-	DialogTrigger,
-	DialogContent,
-	DialogTitle,
-	DialogDescription,
-	DialogHeader,
-	DialogFooter,
-} from "@/components/ui/dialog";
+import { ProjectPreview } from "@/components/projectPreview";
+import ScalingText from "@/components/scalingText";
+import { Spacer } from "@/components/ui/spacer";
+import { useRef } from "react";
+import gsap from "gsap";
+import SplitType from "split-type";
+import { useGSAP } from "@gsap/react";
 
-export default function Hero() {
+gsap.registerPlugin(useGSAP);
+
+export default function HomePage() {
+	const background = useRef<HTMLDivElement>(null);
+	const title = useRef<HTMLDivElement>(null);
+	const subTitle = useRef<HTMLDivElement>(null);
+
+	useGSAP(() => {
+		const tl = gsap.timeline();
+		const splitTitle = new SplitType("#title", { types: "lines,words" });
+		const splitSubTitle = new SplitType("#subTitle", { types: "lines,words" });
+
+		tl.from(
+			background.current,
+			{
+				height: 0,
+				paddingTop: 0,
+				duration: 0.7,
+				ease: "power3.out",
+			},
+			"<"
+		)
+			.from(splitTitle.words, {
+				opacity: 0,
+				yPercent: 100,
+				duration: 1.3,
+				stagger: 0.015,
+				ease: "power3.out",
+			})
+			.from(
+				splitSubTitle.words,
+				{
+					opacity: 0,
+					yPercent: 100,
+					duration: 1.2,
+					stagger: 0,
+					ease: "power3.out",
+				},
+				"-=1"
+			);
+	}, []);
+
 	return (
 		<>
-			<nav className="fixed px-10 top-10 left-0">
-				<Dialog>
-					<DialogTrigger asChild>
-						<Button variant="outline">Edit Profile</Button>
-					</DialogTrigger>
-					<DialogContent className="sm:max-w-[425px]">
-						<DialogHeader>
-							<DialogTitle>Edit profile</DialogTitle>
-							<DialogDescription>
-								Make changes to your profile here. Click save when you're done.
-							</DialogDescription>
-						</DialogHeader>
-						<div className="grid gap-4 py-4"></div>
-						<DialogFooter>
-							<Button type="submit">Save changes</Button>
-						</DialogFooter>
-					</DialogContent>
-				</Dialog>
-			</nav>
-			<div className="h-screen bg-gray-100">
-				<div className="flex flex-col h-[90%] px-10 bg-gradient-to-tr from-[#06001C] from-20% to-[#1A0077]">
-					<div className="flex flex-col gap-20 mt-auto mb-28">
-						<h1 className="text-[clamp(28px,6vw,90px)] leading-tight text-white font-thin tracking-wide">
+			<div className="h-[100svh] bg-gray-100">
+				<section
+					ref={background}
+					className="flex flex-col h-[90%] bg-radial-[at_30%_70%] bg-[length:160%] from-[#06001C] from-5% to-[#1A0077] animate-shiftGradient"
+				>
+					<div className="flex flex-col gap-10 mt-auto mb-[10%]">
+						<h1
+							ref={title}
+							id="title"
+							className="text-[clamp(32px,6vw,90px)]! leading-tight text-white font-thin tracking-wide"
+						>
 							Crafting Experiences,
 							<br />
 							Building Interfaces.
 						</h1>
-						<h3 className="text-2xl text-white font-thin tracking-wide">
+						<h3
+							ref={subTitle}
+							id="subTitle"
+							className="text-xl md:text-3xl! text-white font-thin tracking-wide"
+						>
 							DESIGN + DEVELOPMENT
 						</h3>
 					</div>
-				</div>
+				</section>
 			</div>
-			<div className="flex h-[60vh] bg-gray-100 px-10">
-				<h2 className="text-[56px] my-auto font-thin leading-20 indent-80">
+			<section>
+				<h2 className="text-2xl my-auto font-thin md:hidden">
 					I’m a UI/UX designer and frontend developer with a passion for
 					creating intuitive, visually stunning digital experiences. With a
 					background in communication design and a love for coding, I bridge the
 					gap between design and development.
 				</h2>
-			</div>
-			<div className="flex justify-center items-center h-[85vh] bg-gray-100 px-10">
-				<div className="relative w-[70%] h-[80%] overflow-hidden">
-					<img
-						src="/images/spiral_website.png"
-						alt="spiral website"
-						className="h-full w-full object-cover object-center"
-					/>
-					<div className="absolute w-120 left-14 bottom-14 rounded-xl bg-[#FFDD00] p-6 uppercase font-medium tracking-wider">
-						<h4 className="text-lg">
-							E-Commerce / Company Portal
-							<br />
-							2023-2025
-						</h4>
-					</div>
-				</div>
-			</div>
-			<div className="flex justify-center items-center h-[85vh] bg-gray-100 px-10">
-				<div className="relative w-[70%] h-[80%] overflow-hidden">
-					<img
-						src="/images/easy_order.png"
-						alt="easy order"
-						className="h-full w-full object-cover object-center"
-					/>
-					<div className="absolute w-120 left-14 bottom-14 rounded-xl bg-[#FFDD00] p-6 uppercase font-medium tracking-wider">
-						<h4 className="text-lg">
-							App / Easy Order
-							<br />
-							2023-2025
-						</h4>
-					</div>
-				</div>
-			</div>
-			<div className="flex justify-center items-center h-[85vh] bg-gray-100 px-10">
-				<div className="relative w-[70%] h-[80%] overflow-hidden">
-					<img
-						src="/images/intranet.png"
-						alt="spiral intranet"
-						className="h-full w-full object-cover object-center"
-					/>
-					<div className="absolute w-120 left-14 bottom-14 rounded-xl bg-[#FFDD00] p-6 uppercase font-medium tracking-wider">
-						<h4 className="text-lg">
-							Spiral Intranet
-							<br />
-							2024-2025
-						</h4>
-					</div>
-				</div>
-			</div>
+				<ScalingText
+					className="hidden md:block"
+					text="I’m a UI/UX designer and frontend developer<br>
+					with a passion for creating intuitive, visually stunning<br>
+					digital experiences. With a background in communication<br>
+					design and a love for coding, I bridge the gap between<br>
+					design and development."
+				/>
+			</section>
+			<Spacer />
+			<ProjectPreview
+				imagePath="/images/webshop/webshop_hero_v2.webp"
+				title="E-Commerce / Company Portal"
+				year="2023-2025"
+				href="/webshop"
+			/>
+			<Spacer />
+			<ProjectPreview
+				imagePath="/images/easy_order/easy_order_hero.webp"
+				title="App / Easy Order"
+				year="2023-2025"
+				href="/easy_order"
+			/>
+			<Spacer />
+			<ProjectPreview
+				imagePath="/images/intranet/intranet_hero.webp"
+				title="Spiral Intranet"
+				year="2024-2025"
+				href="/intranet"
+			/>
+			<Spacer />
 		</>
 	);
 }
