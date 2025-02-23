@@ -10,14 +10,17 @@ export const Navbar: React.FC = () => {
 	const [handleTransition] = useTransitionAnimation();
 
 	return (
-		<nav className="fixed z-10 top-6 md:top-8 flex justify-between items-center w-full text-white mix-blend-difference">
+		<nav
+			id="navbar"
+			className="fixed z-10 top-6 md:top-8 flex justify-between items-center w-full text-white mix-blend-exclusion grayscale opacity-0"
+		>
 			<div className="flex items-center text-md">
 				<Link href="/" onClick={(e) => handleTransition(e, "/")}>
 					<button className="custom-nav-button h-4 w-fit ">
 						<p className="opacity-0">Lorenz Perszyk</p>
 						<span className="text text-exit">Lorenz Perszyk</span>
 						<span className="text text-enter">Lorenz Perszyk</span>
-					</button>  
+					</button>
 				</Link>
 			</div>
 			<div className="flex items-center gap-4">

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface ProjectImageProps {
 	src: string;
@@ -12,12 +13,15 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
 	className,
 }) => {
 	return (
-		<section>
-			<img
-				src={src}
-				alt={alt}
-				className={`max-h-[1100px] overflow-hidden w-full object-cover object-center ${className}`}
-			/>
+		<section className="relative">
+			<div className="relative aspect-video">
+				<Image
+					src={src}
+					alt={alt}
+					fill
+					className={`max-h-[1100px] overflow-hidden object-cover object-center ${className}`}
+				/>
+			</div>
 		</section>
 	);
 };

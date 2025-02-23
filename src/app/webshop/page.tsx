@@ -9,6 +9,7 @@ import { ArrowUpRight } from "lucide-react";
 import { ProjectImage } from "@/components/projectImage";
 import { useProjectAnimation } from "@/hooks/useProjectAnimation";
 import { NextProject } from "@/components/nextProject";
+import Image from "next/image";
 
 gsap.registerPlugin(useGSAP);
 
@@ -45,7 +46,7 @@ export default function Webshop() {
 						<p ref={services} id="services" className="text-xl leading-8">
 							Product Owner
 							<br />
-							UI/UX
+							UI/UX Design
 							<br />
 							CMS (Wordpress)
 						</p>
@@ -64,12 +65,14 @@ export default function Webshop() {
 					</div>
 				</div>
 			</section>
-			<div className="w-full overflow-hidden">
-				<img
+			<div className="relative w-full h-[60vh] md:h-[900px] lg:h-[1200px] overflow-hidden">
+				<Image
 					ref={image}
 					src="/images/webshop/webshop_hero_v2.webp"
 					alt="spiral website"
-					className="h-full max-h-[1000px] w-full my-auto object-cover object-center"
+					fill
+					priority
+					className="object-cover object-center"
 				/>
 			</div>
 			<div className="bg-white">
@@ -89,17 +92,17 @@ export default function Webshop() {
 				<Spacer size="xl" />
 				<ProjectImage
 					src="/images/webshop/webshop_home.webp"
-					alt="spiral website"
+					alt="spiral website home screen"
 				/>
 				<Spacer size="sm" />
 				<ProjectImage
 					src="/images/webshop/webshop_search.webp"
-					alt="spiral website"
+					alt="spiral website search screen"
 				/>
 				<Spacer size="sm" />
 				<ProjectImage
 					src="/images/webshop/webshop_product.webp"
-					alt="spiral website"
+					alt="spiral website product screen"
 				/>
 				<Spacer size="sm" />
 				<ProjectImage
@@ -109,17 +112,17 @@ export default function Webshop() {
 				<Spacer size="sm" />
 				<ProjectImage
 					src="/images/webshop/webshop_basket.webp"
-					alt="spiral website"
+					alt="spiral website basket screen"
 				/>
 				<Spacer size="sm" />
 				<ProjectImage
 					src="/images/webshop/webshop_service.webp"
-					alt="spiral website"
+					alt="spiral website service screen"
 				/>
 				<Spacer size="sm" />
 				<ProjectImage
 					src="/images/webshop/webshop_mood_1.webp"
-					alt="spiral website"
+					alt="silhouette of men standing on top of building in construction, crane in the background"
 					className="max-h-[1200px] object-[50%_20%]!"
 				/>
 				<Spacer />

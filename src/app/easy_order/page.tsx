@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { useProjectAnimation } from "@/hooks/useProjectAnimation";
 import { NextProject } from "@/components/nextProject";
+import Image from "next/image";
 
 export default function EasyOrder() {
 	const { line, title, description, services, buttons, image } =
@@ -39,7 +40,7 @@ export default function EasyOrder() {
 						<p ref={services} id="services" className="text-xl leading-8">
 							Product Owner
 							<br />
-							UI/UX
+							UI/UX Design
 						</p>
 						<div className="flex flex-col gap-0">
 							<Link
@@ -68,12 +69,14 @@ export default function EasyOrder() {
 					</div>
 				</div>
 			</section>
-			<div className="w-full overflow-hidden">
-				<img
+			<div className="relative w-full h-[60vh] md:h-[900px] lg:h-[1200px] overflow-hidden">
+				<Image
 					ref={image}
 					src="/images/easy_order/easy_order_hero.webp"
-					alt="spiral easy order"
-					className="h-full max-h-[1000px] w-full my-auto object-cover object-center"
+					alt="smartphone laying on concrete surface showing the apps loading screen"
+					fill
+					priority
+					className="object-cover object-center scale-110"
 				/>
 			</div>
 			<Spacer size="xl" />
@@ -92,15 +95,15 @@ export default function EasyOrder() {
 			<section className="relative overflow-hidden">
 				<img
 					src="/images/easy_order/eo_1.webp"
-					alt=""
+					alt="three screenshots of the easy order app"
 					className="h-full w-full object-cover object-center"
 				/>
 			</section>
 			<Spacer />
 			<section className="relative max-h-[1000px] overflow-hidden">
 				<img
-					src="/images/easy_order/eo_warehouse.jpg"
-					alt=""
+					src="/images/easy_order/eo_mood_1.webp"
+					alt="person in warning vest using touch device"
 					className="h-full w-full object-cover object-center"
 				/>
 			</section>

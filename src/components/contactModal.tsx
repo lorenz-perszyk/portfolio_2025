@@ -32,13 +32,13 @@ export const ContactModal: React.FC<CustomDialogProps> = ({ trigger }) => {
 						<ContactForm />
 						<DialogClose asChild>
 							<button className="absolute top-3 lg:top-8 left-0 lg:left-8 cursor-pointer">
-								<X className="h-10 w-10 text-gray-400" strokeWidth={1} />
+								<X className="h-10 w-10 text-gray-400 hover:text-gray-600" strokeWidth={1} />
 							</button>
 						</DialogClose>
 					</div>
 					<img
 						src="/images/contact.webp"
-						alt="contact"
+						alt=""
 						className="w-full lg:w-3/5 max-h-60 lg:max-h-full object-cover rounded-3xl rotate-180"
 					/>
 				</div>

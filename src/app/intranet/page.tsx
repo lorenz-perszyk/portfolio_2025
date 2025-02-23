@@ -5,6 +5,7 @@ import { Spacer } from "@/components/ui/spacer";
 import { ProjectImage } from "@/components/projectImage";
 import { useProjectAnimation } from "@/hooks/useProjectAnimation";
 import { NextProject } from "@/components/nextProject";
+import Image from "next/image";
 
 export default function Intranet() {
 	const { line, title, description, services, buttons, image } =
@@ -40,17 +41,19 @@ export default function Intranet() {
 						<p ref={services} id="services" className="text-xl leading-8">
 							Frontend Development
 							<br />
-							UI/UX
+							UI/UX Design
 						</p>
 					</div>
 				</div>
 			</section>
-			<div className="w-full overflow-hidden">
-				<img
+			<div className="relative w-full h-[60vh] md:h-[900px] lg:h-[1200px] overflow-hidden">
+				<Image
 					ref={image}
 					src="/images/intranet/intranet_hero.webp"
 					alt="spiral intranet"
-					className="h-full max-h-[1000px] w-full my-auto object-cover object-center"
+					fill
+					priority
+					className="object-cover object-center"
 				/>
 			</div>
 			<Spacer size="sm" />
@@ -63,29 +66,29 @@ export default function Intranet() {
 				<h2 className="text-2xl my-auto font-thin md:hidden">
 					Transforming the intranet into a user-friendly hub for seamless
 					information access, designed to streamline workflows and boost
-					productivity
+					productivity.
 				</h2>
 				<ScalingText
 					className="hidden md:block"
 					text="Transforming the intranet into a user-friendly hub<br>
 					for seamless information access, designed to streamline workflows<br>
-					and boost productivity "
+					and boost productivity."
 				/>
 			</section>
 			<Spacer />
 			<ProjectImage
 				src="/images/intranet/intranet_grid.webp"
-				alt="spiral website"
+				alt="spiral intranet grid screen"
 			/>
 			<Spacer size="sm" />
 			<ProjectImage
 				src="/images/intranet/intranet_roa.webp"
-				alt="spiral website"
+				alt="spiral intranet roa calculator"
 			/>
 			<Spacer size="sm" />
 			<ProjectImage
 				src="/images/intranet/intranet_spiralothek.webp"
-				alt="spiral website"
+				alt="spiral intranet video library"
 			/>
 			<Spacer />
 			<NextProject projectName="Spiral" href="/webshop" />

@@ -11,6 +11,8 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 
 export default function HomePage() {
+	const navbar = document.getElementById("navbar");
+	const container = useRef<HTMLDivElement>(null);
 	const background = useRef<HTMLDivElement>(null);
 	const title = useRef<HTMLDivElement>(null);
 	const subTitle = useRef<HTMLDivElement>(null);
@@ -20,12 +22,14 @@ export default function HomePage() {
 		const splitTitle = new SplitType("#title", { types: "lines,words" });
 		const splitSubTitle = new SplitType("#subTitle", { types: "lines,words" });
 
+		tl.set(container.current, { opacity: 1 });
+
 		tl.from(
 			background.current,
 			{
 				height: 0,
 				paddingTop: 0,
-				duration: 0.7,
+				duration: 0.9,
 				ease: "power3.out",
 			},
 			"<"
@@ -47,12 +51,28 @@ export default function HomePage() {
 					ease: "power3.out",
 				},
 				"-=1"
-			);
+			)
+			.fromTo(
+				"#navbar",{
+					yPercent: -100,
+				},
+				{
+					opacity: 1,
+					yPercent: 0,
+					duration: 1.2,
+					ease: "power3.out",
+				},
+				"<"
+			)
+			.then(() => {
+				splitTitle.revert();
+				splitSubTitle.revert();
+			});
 	}, []);
 
 	return (
 		<>
-			<div className="h-[100svh] bg-gray-100">
+			<div className="h-[100svh] bg-gray-100 opacity-0" ref={container}>
 				<section
 					ref={background}
 					className="flex flex-col h-[90%] bg-radial-[at_30%_70%] bg-[length:160%] from-[#06001C] from-5% to-[#1A0077] animate-shiftGradient"
@@ -77,6 +97,7 @@ export default function HomePage() {
 					</div>
 				</section>
 			</div>
+			<Spacer size="sm" />
 			<section>
 				<h2 className="text-2xl my-auto font-thin md:hidden">
 					I’m a UI/UX designer and frontend developer with a passion for
@@ -93,7 +114,7 @@ export default function HomePage() {
 					design and development."
 				/>
 			</section>
-			<Spacer />
+			<Spacer size="xl" />
 			<ProjectPreview
 				imagePath="/images/webshop/webshop_hero_v2.webp"
 				title="E-Commerce / Company Portal"

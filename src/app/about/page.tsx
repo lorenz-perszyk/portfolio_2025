@@ -5,6 +5,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 
 gsap.registerPlugin(useGSAP);
 
@@ -73,6 +74,18 @@ export default function Home() {
 				},
 				"<"
 			)
+			.fromTo(
+				"#navbar",{
+					yPercent: -100,
+				},
+				{
+					opacity: 1,
+					yPercent: 0,
+					duration: 1,
+					ease: "power3.out",
+				},
+				"-=1"
+			)
 			.then(() => {
 				splitTitle.revert();
 				splitDescription.revert();
@@ -99,11 +112,13 @@ export default function Home() {
 						className="relative mt-[2vh] md:mt-0 col-span-8 md:col-span-4 col-start-3 md:col-start-8 w-full h-[50vh] md:h-[75vh] overflow-hidden"
 						style={{ transformOrigin: "bottom" }}
 					>
-						<img
+						<Image
 							ref={image}
 							src="/images/lorenz.webp"
-							alt="hero"
-							className="grayscale object-cover h-full"
+							alt="Lorenz Perszyk"
+							fill
+							priority
+							className="grayscale object-cover"
 						/>
 					</div>
 				</section>
@@ -136,8 +151,9 @@ export default function Home() {
 						<div>
 							<p className="font-medium">Frontend Development</p>
 							<p>
-								Building intuitive, responsive interfaces using modern tools
-								like Next.js, Tailwind CSS, and TypeScript.
+								Building intuitive, responsive interfaces that deliver seamless
+								user experiences across devices, with a focus on clean code,
+								scalability, and accessibility.
 							</p>
 						</div>
 						<div>

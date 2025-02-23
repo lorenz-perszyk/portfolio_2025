@@ -2,6 +2,7 @@
 
 import { useTransitionAnimation } from "@/hooks/useTransitionAnimation";
 import Link from "next/link";
+import Image from "next/image";
 
 type ProjectPreviewProps = {
 	imagePath: string;
@@ -22,13 +23,14 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
 		<section className="flex justify-center items-center">
 			<Link
 				href={href}
-				className="relative w-full h-full mb-16 md:mb-0 cursor-pointer"
+				className="relative w-full h-full aspect-video mb-16 md:mb-0 cursor-pointer"
 				onClick={(e) => handleTransition(e, href)}
 			>
-				<img
+				<Image
 					src={imagePath}
 					alt="spiral website"
-					className="object-cover object-center w-full max-h-[1000px] overflow-hidden aspect-3/2"
+					fill
+					className="object-cover object-center max-h-[1000px] overflow-hidden "
 				/>
 				<div className="absolute w-80 md:w-120 left-4 -bottom-8 md:left-8 md:bottom-8 xl:left-12 xl:bottom-12 rounded-xl bg-[#FFDD00] p-4 md:p-6 uppercase font-medium tracking-wider">
 					<h4 className="text-md md:text-lg">

@@ -20,74 +20,91 @@ export const useProjectAnimation = () => {
 			types: "lines,words",
 		});
 		const splitServices = new SplitType("#services");
-		const navLinks = document.querySelectorAll(".nav-button")
+		const navLinks = document.querySelectorAll(".nav-button");
 
-		tl.from(line.current, {
-			width: 0,
-			duration: 1.8,
-			ease: "power3.out",
-		},
-		"+=0.3");
 		tl.from(
-			splitTitle.words,
+			line.current,
 			{
-				opacity: 0,
-				yPercent: 120,
-				duration: 1,
-				stagger: 0.005,
-				ease: "power2.out",
-			},
-			"<"
-		);
-		tl.from(
-			splitDescription.words,
-			{
-				opacity: 0,
-				yPercent: 120,
-				duration: 1,
-				stagger: 0.008,
+				width: 0,
+				duration: 1.8,
 				ease: "power3.out",
 			},
-			"<"
-		);
-		tl.from(
-			splitServices.lines,
-			{
-				opacity: 0,
-				y: 20,
-				duration: 1,
-				stagger: 0.05,
-				ease: "power2.out",
-			},
-			"-=1.4"
-		);
-		tl.from(
-			navLinks,
-			{
-				opacity: 0,
-				y: 20,
-				duration: 1,
-				stagger: 0.1,
-				ease: "power2.out",
-			},
-			"<"
-		);
-		tl.from(
-			image.current,
-			{
-				opacity: 0,
-				y: 40,
-				scale: 1.05,
-				delay: 0.3,
-				duration: 1.2,
-				ease: "power1.out",
-			},
-			"<-=0.3"
-		);
-		tl.then(() => {
-			splitDescription.revert();
-			splitServices.revert();
-		});
+			"+=0.3"
+		)
+			.from(
+				splitTitle.words,
+				{
+					opacity: 0,
+					yPercent: 120,
+					duration: 1,
+					stagger: 0.005,
+					ease: "power2.out",
+				},
+				"<"
+			)
+			.from(
+				splitDescription.words,
+				{
+					opacity: 0,
+					yPercent: 120,
+					duration: 1,
+					stagger: 0.008,
+					ease: "power3.out",
+				},
+				"<"
+			)
+			.from(
+				splitServices.lines,
+				{
+					opacity: 0,
+					y: 20,
+					duration: 1,
+					stagger: 0.05,
+					ease: "power2.out",
+				},
+				"-=1.4"
+			)
+			.from(
+				navLinks,
+				{
+					opacity: 0,
+					y: 20,
+					duration: 1,
+					stagger: 0.1,
+					ease: "power2.out",
+				},
+				"<"
+			)
+			.from(
+				image.current,
+				{
+					opacity: 0,
+					y: 40,
+					scale: 1.05,
+					delay: 0.3,
+					duration: 1.2,
+					ease: "power1.out",
+				},
+				"<-=0.3"
+			)
+			.fromTo(
+				"#navbar",
+				{
+					yPercent: -100,
+				},
+				{
+					opacity: 1,
+					yPercent: 0,
+					duration: 1.2,
+					ease: "power3.out",
+				},
+				"<"
+			)
+			.then(() => {
+				splitTitle.revert();
+				splitDescription.revert();
+				splitServices.revert();
+			});
 	}, []);
 
 	return { line, title, description, services, buttons, image };
