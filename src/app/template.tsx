@@ -2,19 +2,13 @@
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import { animatePageIn } from "./utils/animations";
 import { PreLoader } from "@/components/preLoader";
 
 export default function Template({ children }: { children: React.ReactNode }) {
 	const transitionElement = useRef(null);
 
-	useGSAP(() => {
-		animatePageIn();
-	});
-
 	return (
 		<>
-			{/* {showPreLoader && <PreLoader />} */}
 			<div
 				ref={transitionElement}
 				id="transitionElement"

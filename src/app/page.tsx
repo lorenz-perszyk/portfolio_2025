@@ -11,14 +11,13 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 
 export default function HomePage() {
-	const navbar = document.getElementById("navbar");
 	const container = useRef<HTMLDivElement>(null);
 	const background = useRef<HTMLDivElement>(null);
 	const title = useRef<HTMLDivElement>(null);
 	const subTitle = useRef<HTMLDivElement>(null);
 
 	useGSAP(() => {
-		const tl = gsap.timeline();
+		const tl = gsap.timeline()
 		const splitTitle = new SplitType("#title", { types: "lines,words" });
 		const splitSubTitle = new SplitType("#subTitle", { types: "lines,words" });
 
