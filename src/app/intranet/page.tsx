@@ -38,7 +38,7 @@ export default function Intranet() {
 						informed decisions.
 					</p>
 					<div className="flex flex-col gap-8 col-span-12 md:col-span-2 2xl:col-span-3">
-						<p ref={services} id="services" className="text-xl leading-8">
+						<p ref={services} id="services" className="kerning-none text-xl leading-8">
 							Frontend Development
 							<br />
 							UI/UX Design

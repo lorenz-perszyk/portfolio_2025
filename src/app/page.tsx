@@ -17,22 +17,16 @@ export default function HomePage() {
 	const subTitle = useRef<HTMLDivElement>(null);
 
 	useGSAP(() => {
-		const tl = gsap.timeline()
+		const tl = gsap.timeline();
 		const splitTitle = new SplitType("#title", { types: "lines,words" });
 		const splitSubTitle = new SplitType("#subTitle", { types: "lines,words" });
 
-		tl.set(container.current, { opacity: 1 });
-
-		tl.from(
-			background.current,
-			{
+		tl.set(container.current, { opacity: 1, duration: 0 })
+			.from(background.current, {
 				height: 0,
-				paddingTop: 0,
 				duration: 0.9,
 				ease: "power3.out",
-			},
-			"<"
-		)
+			})
 			.from(splitTitle.words, {
 				opacity: 0,
 				yPercent: 100,
@@ -52,7 +46,8 @@ export default function HomePage() {
 				"-=1"
 			)
 			.fromTo(
-				"#navbar",{
+				"#navbar",
+				{
 					yPercent: -100,
 				},
 				{
@@ -69,18 +64,24 @@ export default function HomePage() {
 			});
 	}, []);
 
+	// console log the viewport height
+	console.log(window.innerHeight);
+
 	return (
 		<>
-			<div className="h-[100svh] bg-gray-100 opacity-0" ref={container}>
+			<div
+				className="h-[100dvh] md:h-screen bg-gray-100 opacity-0"
+				ref={container}
+			>
 				<section
 					ref={background}
-					className="flex flex-col h-[90%] bg-radial-[at_30%_70%] bg-[length:160%] from-[#06001C] from-5% to-[#1A0077] animate-shiftGradient"
+					className="flex flex-col h-[90dvh] bg-radial-[at_30%_70%] bg-[length:160%] from-[#06001C] from-5% to-[#1A0077]"
 				>
 					<div className="flex flex-col gap-10 mt-auto mb-[10%]">
 						<h1
 							ref={title}
 							id="title"
-							className="text-[clamp(32px,6vw,90px)]! leading-tight text-white font-thin tracking-wide"
+							className="kerning-none text-[clamp(32px,6vw,90px)]! leading-tight text-white font-thin tracking-wide"
 						>
 							Crafting Experiences,
 							<br />
@@ -89,7 +90,7 @@ export default function HomePage() {
 						<h3
 							ref={subTitle}
 							id="subTitle"
-							className="text-xl md:text-3xl! text-white font-thin tracking-wide"
+							className="kerning-none text-xl md:text-3xl! text-white font-thin tracking-wide"
 						>
 							DESIGN + DEVELOPMENT
 						</h3>
