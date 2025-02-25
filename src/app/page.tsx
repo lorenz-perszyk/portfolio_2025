@@ -64,9 +64,6 @@ export default function HomePage() {
 			});
 	}, []);
 
-	// console log the viewport height
-	console.log(window.innerHeight);
-
 	return (
 		<>
 			<div
