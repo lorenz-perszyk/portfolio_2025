@@ -101,7 +101,7 @@ export default function Home() {
 				>
 					<h1
 						id="title"
-						className="kerning-nonetext-[clamp(32px,4vw,60px)]! col-span-12 md:col-span-6 col-start-1 leading-tight text-white font-thin tracking-wide"
+						className="kerning-none text-[clamp(32px,4vw,60px)]! col-span-12 md:col-span-6 col-start-1 leading-tight text-white font-thin tracking-wide"
 					>
 						Designer, developer
 						<br />
