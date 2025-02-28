@@ -12,6 +12,7 @@ gsap.registerPlugin(useGSAP);
 
 export default function HomePage() {
 	const container = useRef<HTMLDivElement>(null);
+	const backgroundWrapper = useRef<HTMLDivElement>(null);
 	const background = useRef<HTMLDivElement>(null);
 	const title = useRef<HTMLDivElement>(null);
 	const subTitle = useRef<HTMLDivElement>(null);
@@ -21,7 +22,11 @@ export default function HomePage() {
 		const splitTitle = new SplitType("#title", { types: "lines,words" });
 		const splitSubTitle = new SplitType("#subTitle", { types: "lines,words" });
 
-		tl.set(container.current, { opacity: 1, duration: 0 })
+		tl.set(container.current, { opacity: 1, duration: 0 });
+		tl.from(backgroundWrapper.current, {
+			height: 0,
+			duration: 0,
+		})
 			.from(background.current, {
 				height: 0,
 				duration: 0.9,
@@ -65,14 +70,11 @@ export default function HomePage() {
 	}, []);
 
 	return (
-		<>
-			<div
-				className="h-[100dvh] md:h-screen bg-gray-100 opacity-0"
-				ref={container}
-			>
+		<div ref={container} className="min-h-screen bg-gray-100 opacity-0">
+			<div ref={backgroundWrapper}>
 				<section
 					ref={background}
-					className="flex flex-col h-[90dvh] bg-radial-[at_30%_70%] bg-[length:160%] from-[#06001C] from-5% to-[#1A0077]"
+					className="flex flex-col h-[90svh] bg-radial-[at_30%_70%] bg-[length:160%] from-[#06001C] from-5% to-[#1A0077]"
 				>
 					<div className="flex flex-col gap-10 mt-auto mb-[10%]">
 						<h1
@@ -94,7 +96,7 @@ export default function HomePage() {
 					</div>
 				</section>
 			</div>
-			<Spacer size="sm" />
+			<Spacer />
 			<section>
 				<h2 className="text-2xl my-auto font-thin md:hidden">
 					I’m a UI/UX designer and frontend developer with a passion for
@@ -133,6 +135,6 @@ export default function HomePage() {
 				href="/intranet"
 			/>
 			<Spacer />
-		</>
+		</div>
 	);
 }

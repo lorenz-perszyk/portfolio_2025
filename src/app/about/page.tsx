@@ -25,7 +25,6 @@ export default function Home() {
 		tl.from(backgroundWrapper.current, {
 			height: 0,
 			duration: 0,
-			ease: "power3.out",
 		})
 			.from(
 				background.current,
@@ -93,7 +92,7 @@ export default function Home() {
 	});
 
 	return (
-		<div className="min-h-screen pb-40 bg-gray-100">
+		<div className="min-h-screen bg-gray-100">
 			<div ref={backgroundWrapper}>
 				<section
 					ref={background}
@@ -101,7 +100,7 @@ export default function Home() {
 				>
 					<h1
 						id="title"
-						className="kerning-none text-[clamp(32px,4vw,60px)]! col-span-12 md:col-span-6 col-start-1 leading-tight text-white font-thin tracking-wide"
+						className="kerning-none text-[clamp(32px,4vw,60px)]! col-span-12 lg:col-span-6 col-start-1 leading-tight text-white font-thin tracking-wide"
 					>
 						Designer, developer
 						<br />
@@ -109,7 +108,7 @@ export default function Home() {
 					</h1>
 					<div
 						ref={imageContainer}
-						className="relative mt-[2vh] md:mt-0 col-span-8 md:col-span-4 col-start-3 md:col-start-8 w-full h-[50vh] md:h-[75vh] overflow-hidden"
+						className="relative mt-[2vh] lg:mt-0 col-span-8 lg:col-span-4 col-start-3 lg:col-start-8 w-full h-[50vh] lg:h-[75vh] overflow-hidden"
 						style={{ transformOrigin: "bottom" }}
 					>
 						<Image
@@ -123,10 +122,10 @@ export default function Home() {
 					</div>
 				</section>
 			</div>
-			<section className="grid grid-cols-12 mt-[15vh] md:mt-15">
+			<section className="grid grid-cols-12 mt-[15vh] lg:mt-15">
 				<h2
 					id="description"
-					className="col-span-12 md:col-span-5 text-2xl md:text-3xl md:leading-10 font-thin"
+					className="col-span-12 lg:col-span-5 text-2xl lg:text-3xl lg:leading-10 font-thin"
 				>
 					I’m a UI/UX Designer and Frontend Developer with a BA in Communication
 					Design and 8+ years of experience in the creative field. My passion
@@ -140,7 +139,7 @@ export default function Home() {
 					<h3 className="col-span-12 md:col-span-4 lg:col-span-6 text-2xl md:text-4xl">
 						Experience and Skills
 					</h3>
-					<div className="col-span-12 md:col-span-5 col-start-1 md:col-start-7 flex flex-col gap-6 md:gap-8 text-lg md:text-xl">
+					<div className="col-span-12 md:col-span-5 col-start-1 md:col-start-7 flex flex-col gap-6 md:gap-8 text-lg lg:text-xl">
 						<div>
 							<p className="font-medium">Art Direction</p>
 							<p>
@@ -217,6 +216,7 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
+			<Spacer />
 		</div>
 	);
 }

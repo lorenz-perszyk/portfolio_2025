@@ -30,7 +30,7 @@ export const ProjectPreview: React.FC<ProjectPreviewProps> = ({
 					src={imagePath}
 					alt="spiral website"
 					fill
-					className="object-cover object-center max-h-[1000px] overflow-hidden "
+					className="object-cover object-center overflow-hidden "
 				/>
 				<div className="absolute w-80 md:w-120 left-4 -bottom-8 md:left-8 md:bottom-8 xl:left-12 xl:bottom-12 rounded-xl bg-[#FFDD00] p-4 md:p-6 uppercase font-medium tracking-wider">
 					<h4 className="text-md md:text-lg">

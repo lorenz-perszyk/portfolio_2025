@@ -101,7 +101,7 @@ export default function Webshop() {
 				/>
 				<Spacer size="sm" />
 				<ProjectImage
-					src="/images/webshop/webshop_product.webp"
+					src="/images/webshop/webshop_product_v2.webp"
 					alt="spiral website product screen"
 				/>
 				<Spacer size="sm" />

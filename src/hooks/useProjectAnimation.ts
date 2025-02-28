@@ -37,7 +37,7 @@ export const useProjectAnimation = () => {
 					opacity: 0,
 					yPercent: 120,
 					duration: 1,
-					stagger: 0.005,
+					stagger: 0.01,
 					ease: "power2.out",
 				},
 				"<"
@@ -54,15 +54,15 @@ export const useProjectAnimation = () => {
 				"<"
 			)
 			.from(
-				splitServices.lines,
+				splitServices.words,
 				{
 					opacity: 0,
-					y: 20,
+					y: 100,
 					duration: 1,
-					stagger: 0.05,
+					stagger: 0.008,
 					ease: "power2.out",
 				},
-				"-=1.4"
+				"-=1.8"
 			)
 			.from(
 				navLinks,
@@ -73,7 +73,7 @@ export const useProjectAnimation = () => {
 					stagger: 0.1,
 					ease: "power2.out",
 				},
-				"<"
+				"-=1.3"
 			)
 			.from(
 				image.current,
