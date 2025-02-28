@@ -97,6 +97,7 @@ export default function HomePage() {
 				</section>
 			</div>
 			<Spacer />
+			<Spacer />
 			<section>
 				<h2 className="text-2xl my-auto font-thin md:hidden">
 					I’m a UI/UX designer and frontend developer with a passion for
